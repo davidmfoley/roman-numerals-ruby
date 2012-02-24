@@ -4,7 +4,7 @@ class Fixnum
   def to_roman
     fives = self / 5
     ones = self % 5
-    ('V' * fives) + ('I' * ones)
+    ['', 'V', 'X'] [fives] + ('I' * ones)
   end
 end
 class RomanNumeralsTests < MiniTest::Unit::TestCase
@@ -17,5 +17,9 @@ class RomanNumeralsTests < MiniTest::Unit::TestCase
   def test_v
     assert_equal('V', 5.to_roman)
   end
+  def test_x
+    assert_equal('X', 10.to_roman)
+  end
+
 end
 
