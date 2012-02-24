@@ -2,10 +2,11 @@ require 'minitest/unit'
 require 'minitest/autorun'
 class Fixnum
   def to_roman
-    tens = self / 10
+    fifties = self / 50
+    tens = self / 10 % 5
     fives = self % 10 / 5
     ones = self % 5
-    naive = ('X' * tens) + ('V' * fives) + ('I' * ones)
+    naive = ('L' * fifties) + ('X' * tens) + ('V' * fives) + ('I' * ones)
     naive = naive.gsub('IIII', 'IV')
     naive = naive.gsub('VIV', 'IX')
   end
@@ -38,6 +39,9 @@ class RomanNumeralsTests < MiniTest::Unit::TestCase
   end
   def test_xvi
     assert_equal('XVI', 16.to_roman)
+  end
+  def test_lviii
+    assert_equal('LVIII', 58.to_roman)
   end
 end
 
