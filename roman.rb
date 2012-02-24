@@ -6,8 +6,10 @@ class Fixnum
     fives = self / 5
     ones = self % 5
     naive = ['', 'V', 'X'] [fives] + ('I' * ones)
+    naive.gsub('IIII', 'IV')
   end
 end
+
 class RomanNumeralsTests < MiniTest::Unit::TestCase
   def test_i
     assert_equal('I', 1.to_roman)
@@ -24,6 +26,8 @@ class RomanNumeralsTests < MiniTest::Unit::TestCase
   def test_iv
     assert_equal('IV', 4.to_roman)
   end
-
+  def test_xiv
+    assert_equal('XIV', 14.to_roman)
+  end
 end
 
