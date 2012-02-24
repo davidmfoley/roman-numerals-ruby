@@ -2,9 +2,10 @@ require 'minitest/unit'
 require 'minitest/autorun'
 class Fixnum
   def to_roman
+    return 'IV' if self == 4
     fives = self / 5
     ones = self % 5
-    ['', 'V', 'X'] [fives] + ('I' * ones)
+    naive = ['', 'V', 'X'] [fives] + ('I' * ones)
   end
 end
 class RomanNumeralsTests < MiniTest::Unit::TestCase
@@ -19,6 +20,9 @@ class RomanNumeralsTests < MiniTest::Unit::TestCase
   end
   def test_x
     assert_equal('X', 10.to_roman)
+  end
+  def test_iv
+    assert_equal('IV', 4.to_roman)
   end
 
 end
