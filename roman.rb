@@ -2,10 +2,10 @@ require 'minitest/unit'
 require 'minitest/autorun'
 class Fixnum
   def to_roman
-    return 'IV' if self == 4
-    fives = self / 5
+    tens = self / 10
+    fives = self % 10 / 5
     ones = self % 5
-    naive = ['', 'V', 'X', 'XV', 'XX'] [fives] + ('I' * ones)
+    naive = ('X' * tens) + ('V' * fives) + ('I' * ones)
     naive = naive.gsub('IIII', 'IV')
     naive = naive.gsub('VIV', 'IX')
   end
